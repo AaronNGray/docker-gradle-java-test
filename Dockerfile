@@ -1,9 +1,20 @@
-FROM gradle:4.7.0-jdk8-alpine AS build
-COPY --chown=gradle:gradle . /home/gradle/src
-WORKDIR /home/gradle/src
-RUN gradle build --no-daemon 
+FROM ubuntu:jammy-20250126 AS build
 
-FROM openjdk:8-jre-slim
+USER root
+
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y --no-install-recommends install unzip openjdk-21-jdk
+
+COPY --chown=gradle:gradle . /home/gradle/src
+RUN ./gradlew build --no-daemon
+WORKDIR /home/gradle/src
+
+FROM ubuntu:jammy-20250126
+
+RUN apt-get update && \
+    apt-get -y upgrade && \
+    apt-get -y --no-install-recommends install unzip openjdk-21-jdk
 
 EXPOSE 8080
 
@@ -13,4 +24,3 @@ COPY --from=build /home/gradle/src/build/libs/*.jar /app/spring-boot-application
 
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/spring-boot-application.jar"]
 
-HEALTHCHECK --interval=1m --timeout=3s CMD wget -q -T 3 -s http://localhost:8080/actuator/health/ || exit 1
