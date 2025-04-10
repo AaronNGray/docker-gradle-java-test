@@ -10,7 +10,8 @@ If you are looking for Maven, then see this [example](https://github.com/codefre
 To compile and package using Docker multi-stage builds
 
 ```bash
-docker build . -t docker-gradle-java-test```
+docker build . -t docker-gradle-java-test
+```
 
 ## Create a Docker image packaging an existing jar
 
