@@ -8,6 +8,7 @@ RUN apt-get update && \
 
 WORKDIR /home/gradle/src
 COPY . /home/gradle/src
+RUN chmod u+x /home/gradle/src/gradlew
 RUN /home/gradle/src/gradlew build --no-daemon
 
 FROM ubuntu:plucky-20241213
