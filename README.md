@@ -10,20 +10,19 @@ If you are looking for Maven, then see this [example](https://github.com/codefre
 To compile and package using Docker multi-stage builds
 
 ```bash
-docker build . -t my-app
-```
+docker build . -t docker-gradle-java-test```
 
 ## Create a Docker image packaging an existing jar
 
 ```bash
 ./gradlew build
-docker build . -t my-app -f Dockerfile.only-package
+docker build . -t docker-gradle-java-test -f Dockerfile.only-package
 ```
 
 ## To run the docker image
 
 ```bash
-docker run -p 8080:8080 my-app
+docker run -p 8080:8080 docker-gradle-java-test
 ```
 
 And then visit http://localhost:8080 in your browser.
