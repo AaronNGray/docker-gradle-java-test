@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get -y --no-install-recommends install unzip openjdk-21-jdk
 
 WORKDIR /home/gradle/src
-COPY --chown=gradle:gradle . /home/gradle/src
+COPY . /home/gradle/src
 RUN /home/gradle/src/gradlew build --no-daemon
 
 FROM ubuntu:plucky-20241213
