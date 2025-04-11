@@ -2,6 +2,5 @@
 *.iml
 .git/
 .gradle
-gradle
 out/
 Dockerfile
