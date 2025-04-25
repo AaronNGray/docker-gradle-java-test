@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y --no-install-recommends install unzip openjdk-21-jdk gradle
+    apt-get -y --no-install-recommends install unzip openjdk-24-jdk
 
 COPY . /home/gradle/src
 WORKDIR /home/gradle/src
@@ -14,7 +14,7 @@ FROM ubuntu:noble-20250127
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y --no-install-recommends install unzip openjdk-21-jdk gradle
+    apt-get -y --no-install-recommends install unzip openjdk-24-jdk
 
 EXPOSE 8080
 
