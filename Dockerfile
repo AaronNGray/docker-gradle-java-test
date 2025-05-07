@@ -4,7 +4,7 @@ USER root
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y --no-install-recommends install unzip openjdk-21-jdk
+    apt-get -y --no-install-recommends install unzip openjdk-24-jdk
 
 WORKDIR /home/gradle/src
 COPY . /home/gradle/src
@@ -15,7 +15,7 @@ FROM ubuntu:plucky-20241213
 
 RUN apt-get update && \
     apt-get -y upgrade && \
-    apt-get -y --no-install-recommends install unzip openjdk-21-jdk
+    apt-get -y --no-install-recommends install unzip openjdk-24-jdk
 
 EXPOSE 8080
 
