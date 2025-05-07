@@ -1,4 +1,4 @@
-FROM ubuntu:plucky-20241213 AS build
+FROM ubuntu:plucky-20250415 AS build
 
 USER root
 
@@ -11,7 +11,7 @@ COPY . /home/gradle/src
 RUN chmod u+x /home/gradle/src/gradlew
 RUN /home/gradle/src/gradlew build --no-daemon
 
-FROM ubuntu:plucky-20241213
+FROM ubuntu:plucky-20250415
 
 RUN apt-get update && \
     apt-get -y upgrade && \
